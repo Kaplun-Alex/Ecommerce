@@ -13,6 +13,6 @@ def cart(request):
 
 def checkout(request):
     context ={}
-    return render(request, "store/chekout.html", context)
+    return render(request, "store/checkout.html", context)
 
 # Create your views here.
