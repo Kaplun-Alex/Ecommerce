@@ -31,7 +31,7 @@ class Order(models.Model):
 
     customer = models.ForeignKey(Customer, null=True, blank=True, on_delete=models.SET_NULL)
     date_ordered = models.DateTimeField(auto_now_add=True)
-    complete = models.BooleanField(default=False, null=True, blanc=False)
+    complete = models.BooleanField(default=False, null=True, blank=False)
     transaction_id = models.CharField(max_length=127, null=True)
 
     def __str__(self):
