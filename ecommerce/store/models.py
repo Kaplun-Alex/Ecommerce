@@ -25,6 +25,14 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = "static/images/no-image.png"
+        return url
 
 class Order(models.Model):
 
@@ -38,14 +46,41 @@ class Order(models.Model):
     def __str__(self):
         return str(self.id)
 
+
+    @property
+    def get_cart_total(self):
+    
+        '''get cart total'''
+        
+        orderitems = self.orderitem_set.all()
+        total = sum([item.get_total for item in orderitems])
+        return total
+
+
+    @property
+    def get_cart_items(self):
+
+        '''get cart items'''
+
+        orderitems = self.orderitem_set.all()
+        total = sum([item.quantity for item in orderitems])
+        return total  
+
 class OrderItem(models.Model):
 
     '''OrderItem ORM class'''
 
     product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL)
     order = models.ForeignKey(Order, null=True, on_delete=models.SET_NULL)
-    qantyty = models.IntegerField(default=0, null=True, blank=True)
+    quantity = models.IntegerField(default=0, null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
+
+
+    @property
+    def get_total(self):
+        total = self.product.price * self.quantity
+        return total
+
 
 class ShippingAdress(models.Model):
 
