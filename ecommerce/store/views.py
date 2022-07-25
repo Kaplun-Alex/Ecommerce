@@ -1,10 +1,16 @@
+'''Wiews.py module'''
+
 from django.shortcuts import render
 from .models import Product
 from  .models import Order
+from django.http import JsonResponse
 
 
 
 def store(request):
+
+    '''Store hrml rendering'''
+
     products = Product.objects.all()
     context ={'products': products }
     return render(request, "store/store.html", context)
@@ -12,6 +18,8 @@ def store(request):
 
 def cart(request):
 
+    '''Cart hrml rendering'''
+
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
@@ -19,13 +27,13 @@ def cart(request):
     else:
         items = []
         order = {"get_cart_items":0, "get_cart_total":0}
-        
     context ={"items":items, "order":order}
     return render(request, "store/cart.html", context)
 
 
 def checkout(request):
-    
+
+    '''Checkout hrml rendering'''
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
@@ -33,8 +41,12 @@ def checkout(request):
     else:
         items = []
         order = {"get_cart_items":0, "get_cart_total":0}
-        
     context ={"items":items, "order":order}
     return render(request, "store/checkout.html", context)
 
-# Create your views here.
+
+def updateItem(request):
+
+    '''Updating items in cart'''
+    return JsonResponse('Item was added', safe=False)
+    
