@@ -7,7 +7,7 @@ for (var i=0; i <  updateBtns.length; i++) {
 
         console.log('User:', user)
         if (user==='AnonymousUser'){
-            console.log('Usrr is not authenticated')
+            console.log('User is not authenticated')
         }
         else {
             updateUserOrder(productId, action)
@@ -23,7 +23,8 @@ function updateUserOrder(productId, action){
     fetch(url, {
         method: 'POST',
         headers:{
-            'Content-Type':'aplication/json'
+            'Content-Type':'aplication/json', 
+            'X-CSRFToken':csrftoken,
         },
         body:JSON.stringify({'productId':productId, 'action':action})
     })
@@ -32,6 +33,6 @@ function updateUserOrder(productId, action){
     })
 
     .then((data) =>{
-        rconsole.log('data:', data)
+        console.log('data:', data)
     })
 }

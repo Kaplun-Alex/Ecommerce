@@ -1,5 +1,6 @@
-'''Wiews.py module'''
+'''wiews.py module'''
 
+import json
 from django.shortcuts import render
 from .models import Product
 from  .models import Order
@@ -48,5 +49,11 @@ def checkout(request):
 def updateItem(request):
 
     '''Updating items in cart'''
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+    print('Action:', action)
+    print('Product:', productId)
+
     return JsonResponse('Item was added', safe=False)
     
