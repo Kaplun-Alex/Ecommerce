@@ -25,13 +25,17 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     @property
     def imageURL(self):
+
+        '''!'''
         try:
             url = self.image.url
+
         except:
             url = "static/images/no-image.png"
+
         return url
 
 class Order(models.Model):
@@ -46,12 +50,21 @@ class Order(models.Model):
     def __str__(self):
         return str(self.id)
 
+    @property
+    def shipping(self):
+
+        '''check cart digital products'''
+        shipping = False
+        orderitems = self.orderitem_set.all()
+        for i in orderitems:
+            if i.product.digital is False:
+                shipping = True
+        return shipping
 
     @property
     def get_cart_total(self):
-    
+
         '''get cart total'''
-        
         orderitems = self.orderitem_set.all()
         total = sum([item.get_total for item in orderitems])
         return total
@@ -64,7 +77,7 @@ class Order(models.Model):
 
         orderitems = self.orderitem_set.all()
         total = sum([item.quantity for item in orderitems])
-        return total  
+        return total
 
 class OrderItem(models.Model):
 
@@ -78,6 +91,8 @@ class OrderItem(models.Model):
 
     @property
     def get_total(self):
+
+        '''get cart total items'''
         total = self.product.price * self.quantity
         return total
 
