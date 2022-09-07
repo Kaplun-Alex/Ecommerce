@@ -19,7 +19,7 @@ class Product(models.Model):
     '''Product ORM class'''
 
     name = models.CharField(max_length=255, null=True)
-    price = models.FloatField()
+    price = models.DecimalField(max_digits=7, decimal_places=2)
     digital = models.BooleanField(default=False, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
 
