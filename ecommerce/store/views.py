@@ -1,27 +1,17 @@
-'''wiews.py module'''
-
 from itertools import product
 import json
 from django.shortcuts import render
 from .models import OrderItem, Product
 from  .models import Order
 from django.http import JsonResponse
-
+from .utils import cookieCart, cartData
 
 
 def store(request):
 
     '''Store html rendering'''
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        items = order.orderitem_set.all()
-        cartItems = order.get_cart_items
-    else:
-
-        items = []
-        order = {"get_cart_items":0, "get_cart_total":0, 'shipping': False}
-        cartItems = order['get_cart_items']
+    data = cartData(request)
+    cartItems = data["cartItems"]
 
     products = Product.objects.all()
     context ={'products': products, 'cartItems':cartItems }
@@ -31,53 +21,23 @@ def store(request):
 def cart(request):
 
     '''Cart html rendering'''
+    data = cartData(request)
+    cartItems = data["cartItems"]
+    order = data["order"]
+    items = data["items"]
 
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        items = order.orderitem_set.all()
-        cartItems = order.get_cart_items
-    else:
-        try:
-            cart = json.loads(request.COOKIES['cart'])
-        except:
-            cart ={}
-        print(cart)
-        items = []
-        order = {"get_cart_items":0, "get_cart_total":0, 'shipping': False}
-        cartItems = order['get_cart_items']
-
-        for i in cart:
-            cartItems += cart[i]["quantity"]
-
-            product = Product.objects.get(id=i)
-            total = product.price * cart[i]["quantity"]
-
-            order['get_cart_total'] += total
-            order['get_cart_items'] += cart[i]["quantity"]
-
-            item = {
-                'product'
-            }
-
-
-    context ={"items":items, "order":order, 'cartItems':cartItems}
+    context = {"items":items, "order":order, 'cartItems':cartItems}
     return render(request, "store/cart.html", context)
 
 
 def checkout(request):
 
-    '''Checkout html rendering'''
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        items = order.orderitem_set.all()
-        cartItems = order.get_cart_items
-    else:
-        items = []
-        order = {"get_cart_items":0, "get_cart_total":0, 'shipping': False}
-        cartItems = order['get_cart_items']
-    context ={"items":items, "order":order, 'cartItems':cartItems}
+    data = cartData(request)
+    cartItems = data["cartItems"]
+    order = data["order"]
+    items = data["items"]
+
+    context = {"items":items, "order":order, 'cartItems':cartItems}
     return render(request, "store/checkout.html", context)
 
 

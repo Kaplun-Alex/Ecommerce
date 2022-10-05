@@ -6,7 +6,7 @@ for (var i=0; i <  updateBtns.length; i++) {
         console.log('productID:', productId, 'Action:', action)
 
         console.log('User:', user)
-        if (user==='AnonymousUser'){
+        if (user == 'AnonymousUser'){
             addCookieItem(productId, action)
         }
         else {
@@ -16,28 +16,28 @@ for (var i=0; i <  updateBtns.length; i++) {
 }
 
 function addCookieItem(productId, action) {
-    console.log('Not logged in..')
 
     if(action == 'add') {
+        console.log('Increace item...')
         if(cart[productId] == undefined){
             cart[productId] = {'quantity':1}
         }
         else{
             cart[productId]['quantity'] += 1
         }
+    }
     if(action =='remove'){
-        cert[productId][quantity] -= 1
+        console.log('Decreace item...')
+        cart[productId]['quantity'] -= 1
 
-        if(cart[productId][quantity] <= 0){
-            console.log("Remove Item")
+        if(cart[productId]['quantity'] <= 0){
             delete cart[productId]
-        }
+            }
+    }
 
-    }
-    console.log("Cart:", cart)
-    document.cookie = 'cart=' + JSON.stringify(cart) + ";domain;path*/" 
-   
-    }
+    document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+    console.log(cookie)
+
     location.reload()
 }
 

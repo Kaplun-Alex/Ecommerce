@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 {% load static %}
 <html>
@@ -29,7 +28,7 @@
 			return cookieValue;
 		}
 
-		const csrftoken = getToken('csrftoken');
+		var csrftoken = getToken('csrftoken');
 
 		function getCookie(name) {
 			//Split cookie string and get all individual name=value pairsin an array
@@ -45,14 +44,15 @@
 				return decodeURIComponent(cookiePair[1]);
 				}
 			}
-		//Return null if it not found
-		return null;
+			//Return null if it not found
+			return null;
 		}
 		var cart = JSON.parse(getCookie('cart'))
+
 		if(cart == undefined){
 			cart = {}
-			console.log('cart was created')
-			document.cookie = 'cart=' + JSON.stringify(cart) + ";domain;path*/"
+			console.log('cart was created', cart)
+			document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
 		}
 		console.log('Cart:', cart)
 	</script>
