@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 {% load static %}
 <html>
@@ -28,33 +29,33 @@
 			return cookieValue;
 		}
 
-		var csrftoken = getToken('csrftoken');
+		const csrftoken = getToken('csrftoken');
 
-		function getCookie(name) {
-			//Split cookie string and get all individual name=value pairsin an array
-			var cookieArr = document.cookie.split(";");
-
-			//Loop throught the array elements
-			for (var i = 0; i < cookieArr.length; i++) {
-				var cookiePair = cookieArr[i].split("=");
 		
-			/*Removing whitespace at the beginning of the cookie name and compareit with the given string*/
-			if(name == cookiePair[0].trim()) {
-				// Decode the cookie value and return
-				return decodeURIComponent(cookiePair[1]);
-				}
-			}
-			//Return null if it not found
-			return null;
-		}
-		var cart = JSON.parse(getCookie('cart'))
+		// function getCookie(name) {
+		// 	//Split cookie string and get all individual name=value pairsin an array
+		// 	var cookieArr = document.cookie.split(";");
 
-		if(cart == undefined){
-			cart = {}
-			console.log('cart was created', cart)
-			document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
-		}
-		console.log('Cart:', cart)
+		// 	//Loop throught the array elements
+		// 	for (var i = 0; i < cookieArr.length; i++) {
+		// 		var cookiePair = cookieArr[i].split("=");
+		
+		// 	/*Removing whitespace at the beginning of the cookie name and compareit with the given string*/
+		// 	if(name == cookiePair[0].trim()) {
+		// 		// Decode the cookie value and return
+		// 		return decodeURIComponent(cookiePair[1]);
+		// 		}
+		// 	}
+		// //Return null if it not found
+		// return null;
+		// }
+		// var cart = JSON.parse(getCookie('cart'))
+		// if(cart == undefined){
+		// 	cart = {}
+		// 	console.log('cart was created', cart)
+		// 	document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path*=/"
+		// }
+		// console.log('Cart:', cart)
 	</script>
 
 </head>

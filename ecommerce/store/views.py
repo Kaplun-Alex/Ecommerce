@@ -4,7 +4,7 @@ from django.shortcuts import render
 from .models import OrderItem, Product
 from  .models import Order
 from django.http import JsonResponse
-from .utils import cookieCart, cartData
+from .utils import cookieCart, cartData, requestViewer
 
 
 def store(request):
@@ -43,29 +43,40 @@ def checkout(request):
 
 def updateItem(request):
 
-    '''Updating items in cart'''
+    '''Updating items in cart for Registered user'''
 
-    data = json.loads(request.body)
-    productId = data['productId']
-    action = data['action']
-    print('Action:', action)
-    print('Product:', productId)
+    requestInfo = requestViewer(request)
 
-    customer = request.user.customer
-    product  = Product.objects.get(id=productId)
-    order, created = Order.objects.get_or_create(customer=customer, complete=False)
+    print(request.user)
+    print(type(request.user))
 
-    orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+    if request.user == django.utils.functional.SimpleLazyObject:
+        anonimouseCustomerKey = request.META['HTTP_X_CSRFTOKEN']
+        print('ANUserKey:', anonimouseCustomerKey)
 
-    if action == 'add':
-        orderItem.quantity = (orderItem.quantity +1)
-    elif action == 'remove':
-        orderItem.quantity = (orderItem.quantity -1)
+    else:    
 
-    orderItem.save()
+        '''Updating items in cart for Registered user'''
+        data = json.loads(request.body)
+        productId = data['productId']
+        action = data['action']
+        print('Action:', action)
+        print('Product:', productId)
+        
+        customer = request.user.customer
+        product  = Product.objects.get(id=productId)
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
-    if orderItem.quantity <= 0:
-        orderItem.delete()
+        orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+
+        if action == 'add':
+            orderItem.quantity = (orderItem.quantity +1)
+        elif action == 'remove':
+            orderItem.quantity = (orderItem.quantity -1)
+
+        orderItem.save()
+
+        if orderItem.quantity <= 0:
+            orderItem.delete()
 
     return JsonResponse('Item was added', safe=False)
-    

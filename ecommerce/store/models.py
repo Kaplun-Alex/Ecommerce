@@ -14,11 +14,17 @@ class Customer(models.Model):
     def __str__(self):
         return self.name
 
+# class Anonimouscustomer(models.Model):
+#     '''Anonimous customer ORM clas'''
+#     aUser = models.CharField(max_lenght=255, null=True)
+
+
 class Product(models.Model):
 
     '''Product ORM class'''
 
     name = models.CharField(max_length=255, null=True)
+    number_of_pieces = models.IntegerField(null=True)
     price = models.DecimalField(max_digits=7, decimal_places=2)
     digital = models.BooleanField(default=False, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
