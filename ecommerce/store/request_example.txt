@@ -1,0 +1,105 @@
+{'ALLUSERSPROFILE': 'C:\\ProgramData', 
+'APPDATA': 'C:\\Users\\Owner\\AppData\\Roaming',
+'CHROME_CRASHPAD_PIPE_NAME': '\\\\.\\pipe\\crashpad_9664_GLWXALURHLUILDPM',
+'COMMONPROGRAMFILES': 'C:\\Program Files\\Common Files',
+'COMMONPROGRAMFILES(X86)': 'C:\\Program Files (x86)\\Common Files',
+'COMMONPROGRAMW6432': 'C:\\Program Files\\Common Files', 'COMPUTERNAME': 'OLEKSA-PEKLO',
+'COMSPEC': 'C:\\Windows\\system32\\cmd.exe', 'DRIVERDATA': 'C:\\Windows\\System32\\Drivers\\DriverData',
+'FPS_BROWSER_APP_PROFILE_STRING': 'Internet Explorer', 'FPS_BROWSER_USER_PROFILE_STRING': 'Default',
+'HOMEDRIVE': 'C:', 'HOMEPATH': '\\Users\\Owner', 'LOCALAPPDATA': 'C:\\Users\\Owner\\AppData\\Local',
+'LOGONSERVER': '\\\\OLEKSA-PEKLO', 'NUMBER_OF_PROCESSORS': '4', 'ONEDRIVE': 'C:\\Users\\Owner\\OneDrive',
+'ORIGINAL_XDG_CURRENT_DESKTOP': 'undefined', 'OS': 'Windows_NT',
+'PATH': "C:\\Python_project\\Ecommerce\\env\\Scripts;C:\\Program Files\\Python310\\Scripts\\;
+    C:\\Program Files\\Python310\\;C:\\Program Files\\Python39\\Scripts\\;
+    C:\\Program Files\\Python39\\;C:\\Windows\\system32;C:\\Windows;
+    C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;
+    C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;
+    C:\\Program Files\\Docker\\Docker\\resources\\bin;
+    C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Users\\Owner\\AppData\\Local\\Microsoft\\WindowsApps;
+    C:\\Program Files\\JetBrains\\PyCharm Community Edition 2021.1.1\\bin;;C:\\Users\\Owner\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;
+    C:\\Program Files\\JetBrains\\PyCharm 2021.3.2\\bin;;
+    C:\\Program Files\\heroku\\bin;
+    C:\\Users\\Owner\\AppData\\Roaming\\Python\\Python310\\Scripts;
+    'C:\\Users\\Owner\\AppData\\Roaming\\Python\\Python310\\site-packages;",
+'PATHEXT': '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW',
+'PROCESSOR_ARCHITECTURE': 'AMD64',
+'PROCESSOR_IDENTIFIER': 'Intel64 Family 6 Model 58 Stepping 9, GenuineIntel',
+'PROCESSOR_LEVEL': '6', 
+'PROCESSOR_REVISION': '3a09',
+'PROGRAMDATA': 'C:\\ProgramData', 
+'PROGRAMFILES': 'C:\\Program Files', 
+'PROGRAMFILES(X86)': 'C:\\Program Files (x86)',
+'PROGRAMW6432': 'C:\\Program Files',
+'PROMPT': '(env) $P$G',
+'PSMODULEPATH': 'C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules',
+'PUBLIC': 'C:\\Users\\Public', 'PYCHARM': 'C:\\Program Files\\JetBrains\\PyCharm 2021.3.2\\bin;',
+'PYCHARM COMMUNITY EDITION': 'C:\\Program Files\\JetBrains\\PyCharm Community Edition 2021.1.1\\bin;',
+'SESSIONNAME': 'Console',
+'SYSTEMDRIVE': 'C:',
+'SYSTEMROOT': 'C:\\Windows',
+'TEMP': 'C:\\Users\\Owner\\AppData\\Local\\Temp',
+'TMP': 'C:\\Users\\Owner\\AppData\\Local\\Temp',
+'USERDOMAIN': 'OLEKSA-PEKLO',
+'USERDOMAIN_ROAMINGPROFILE': 'OLEKSA-PEKLO',
+'USERNAME': 'Owner', 
+'USERPROFILE': 'C:\\Users\\Owner', 
+'VIRTUAL_ENV': 'C:\\Python_project\\Ecommerce\\env', 
+'VIRTUAL_ENV_PROMPT': '(env) ', 'WINDIR': 'C:\\Windows', 
+'TERM_PROGRAM': 'vscode', 'TERM_PROGRAM_VERSION': '1.71.2',
+'LANG': 'ru_RU.UTF-8', 'COLORTERM': 'truecolor',
+'GIT_ASKPASS': 'c:\\Users\\Owner\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh',
+'VSCODE_GIT_ASKPASS_NODE': 'C:\\Users\\Owner\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe',
+'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '--ms-enable-electron-run-as-node', 
+'VSCODE_GIT_ASKPASS_MAIN': 'c:\\Users\\Owner\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js', 
+'VSCODE_GIT_IPC_HANDLE': '\\\\.\\pipe\\vscode-git-384a4d69e8-sock', 
+'_OLD_VIRTUAL_PATH': "C:\\Program Files\\Python310\\Scripts\\;
+    C:\\Program Files\\Python310\\;
+    C:\\Program Files\\Python39\\Scripts\\;
+    C:\\Program Files\\Python39\\;C:\\Windows\\system32;
+    C:\\Windows;C:\\Windows\\System32\\Wbem;
+    C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;
+    C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;
+    C:\\Program Files\\Docker\\Docker\\resources\\bin;
+    C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Users\\Owner\\AppData\\Local\\Microsoft\\WindowsApps;
+    C:\\Program Files\\JetBrains\\PyCharm Community Edition 2021.1.1\\bin;;C:\\Users\\Owner\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;
+    C:\\Program Files\\JetBrains\\PyCharm 2021.3.2\\bin;;C:\\Program Files\\heroku\\bin;C:\\Users\\Owner\\AppData\\Roaming\\Python\\Python310\\Scripts;
+    'C:\\Users\\Owner\\AppData\\Roaming\\Python\\Python310\\site-packages;", '_OLD_VIRTUAL_PROMPT': '$P$G', 'DJANGO_SETTINGS_MODULE': 'ecommerce.settings', 
+'RUN_MAIN': 'true', 
+'SERVER_NAME': 'license.piriform.com', 
+'GATEWAY_INTERFACE': 'CGI/1.1', 
+'SERVER_PORT': '8000', 
+'REMOTE_HOST': '', 
+'CONTENT_LENGTH': '32', 
+'SCRIPT_NAME': '', 
+'SERVER_PROTOCOL': 'HTTP/1.1', 
+'SERVER_SOFTWARE': 'WSGIServer/0.2', 
+'REQUEST_METHOD': 'POST', 
+'PATH_INFO': '/update_item/', 
+'QUERY_STRING': '', 
+'REMOTE_ADDR': '127.0.0.1', 
+'CONTENT_TYPE': 'aplication/json', 
+'HTTP_HOST': '127.0.0.1:8000', 
+'HTTP_CONNECTION': 'keep-alive', 
+'HTTP_SEC_CH_UA': '"Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"', 
+'HTTP_X_CSRFTOKEN': 'kDefiPWztWxsQRNoMpvjW9SjuA4sCxQn', 
+'HTTP_SEC_CH_UA_MOBILE': '?0', 
+'HTTP_USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36', 
+'HTTP_SEC_CH_UA_PLATFORM': '"Windows"', 
+'HTTP_ACCEPT': '*/*', 
+'HTTP_ORIGIN': 'http://127.0.0.1:8000', 
+'HTTP_SEC_FETCH_SITE': 'same-origin', 
+'HTTP_SEC_FETCH_MODE': 'cors', 
+'HTTP_SEC_FETCH_DEST': 'empty', 
+'HTTP_REFERER': 'http://127.0.0.1:8000/', 
+'HTTP_ACCEPT_ENCODING': 'gzip, deflate, br',
+'HTTP_ACCEPT_LANGUAGE': 'ru,en-US;q=0.9,en;q=0.8,uk;q=0.7', 
+'HTTP_COOKIE': 'cart={}; csrftoken=kDefiPWztWxsQRNoMpvjW9SjuA4sCxQn', 
+'wsgi.input': <django.core.handlers.wsgi.LimitedStream object at 0x000002482F4E7640>,
+'wsgi.errors': <_io.TextIOWrapper name='<stderr>' mode='w' encoding='utf-8'>, 
+'wsgi.version': (1, 0),
+'wsgi.run_once': False, 
+'wsgi.url_scheme': 'http', 
+'wsgi.multithread': True, 
+'wsgi.multiprocess': False, 
+'wsgi.file_wrapper': <class 'wsgiref.util.FileWrapper'>, 
+'CSRF_COOKIE': 'kDefiPWztWxsQRNoMpvjW9SjuA4sCxQn'}
