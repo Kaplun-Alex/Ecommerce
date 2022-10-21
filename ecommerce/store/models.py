@@ -3,6 +3,11 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+class Nauser(models.Model):
+    csrfName = models.CharField(max_length=255, null=True)
+    shortName = models.CharField(max_length=4, null=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+
 class Customer(models.Model):
 
     '''Customer ORM class'''
@@ -17,7 +22,6 @@ class Customer(models.Model):
 # class Anonimouscustomer(models.Model):
 #     '''Anonimous customer ORM clas'''
 #     aUser = models.CharField(max_lenght=255, null=True)
-
 
 class Product(models.Model):
 
@@ -49,6 +53,7 @@ class Order(models.Model):
     '''Order ORM class'''
 
     customer = models.ForeignKey(Customer, null=True, blank=True, on_delete=models.SET_NULL)
+    nacustomer = models.ForeignKey(Nauser, null=True, blank=True, on_delete=models.SET_NULL)
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False, null=True, blank=False)
     transaction_id = models.CharField(max_length=127, null=True)
@@ -108,6 +113,7 @@ class ShippingAdress(models.Model):
     '''ShippingAdress ORM class'''
 
     customer = models.ForeignKey(Customer, null=True, blank=True, on_delete=models.SET_NULL)
+    nacustomer = models.ForeignKey(Nauser, null=True, blank=True, on_delete=models.SET_NULL)
     order = models.ForeignKey(Order, null=True, blank=True, on_delete=models.SET_NULL)
     adress = models.CharField(max_length=255, null=True )
     city = models.CharField(max_length=255, null=True )

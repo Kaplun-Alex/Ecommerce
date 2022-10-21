@@ -1,4 +1,5 @@
 import json
+from xmlrpc.client import Boolean
 from .models import *
 import requests
 
@@ -76,4 +77,28 @@ def requestViewer(request):
         headers=headers,
         body=request.body,
     )
+
+def nauserfinder(nauserCSRF):
+    print("Find CSRFUSER ON")
+    shortCsrf = nauserCSRF[:4]
+    print("!!!!!!", nauserCSRF, shortCsrf)
+    res = Nauser.objects.filter(shortName=shortCsrf)
+    if not res:
+        return False
+    if len(res) == 1:
+        print(res[0].id)
+        return res[0].id
+    if len(res) > 1:
+        print("Have couplu of users") 
+        return True    
+    print("Fuck")
+'''
+    try:
+        res = Nauser.objects.filter(csrfName=nauserCSRF)
+        if len(res) > 1:
+            res = pop
+    except:
+        print('Some ERROR corupted')
+'''
+    
     
