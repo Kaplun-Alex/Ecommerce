@@ -52,12 +52,9 @@ def updateItem(request):
     print(type(request))
 
     if request.user.is_authenticated == False:
-        print('User is not authenticated')
         anonimouseCustomerKey = request.META['HTTP_X_CSRFTOKEN']
-        print('ANUserKey:', anonimouseCustomerKey)
-        print(abs(hash(anonimouseCustomerKey)), 'Type of hash', type(hash(anonimouseCustomerKey)))
         usercsrfid = nauserfinder(anonimouseCustomerKey)
-        print(usercsrfid)
+        print("Print in vievs", usercsrfid, "Type of return obj", type(usercsrfid))
         
         data = json.loads(request.body)
         productId = data['productId']

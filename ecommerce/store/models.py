@@ -8,6 +8,7 @@ class Nauser(models.Model):
     shortName = models.CharField(max_length=4, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
 
+
 class Customer(models.Model):
 
     '''Customer ORM class'''

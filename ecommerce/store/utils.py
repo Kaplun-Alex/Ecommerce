@@ -79,26 +79,19 @@ def requestViewer(request):
     )
 
 def nauserfinder(nauserCSRF):
-    print("Find CSRFUSER ON")
     shortCsrf = nauserCSRF[:4]
     print("!!!!!!", nauserCSRF, shortCsrf)
     res = Nauser.objects.filter(shortName=shortCsrf)
+    
     if not res:
-        return False
+        return int(0)
     if len(res) == 1:
         print(res[0].id)
         return res[0].id
     if len(res) > 1:
-        print("Have couplu of users") 
-        return True    
-    print("Fuck")
-'''
-    try:
-        res = Nauser.objects.filter(csrfName=nauserCSRF)
-        if len(res) > 1:
-            res = pop
-    except:
-        print('Some ERROR corupted')
-'''
+        return ((res.order_by("date_created")).last()).id
     
+def nausercreator(nauserCSRF):
+    nacustomer = Nauser(csrfName=nauserCSRF)
+    #nacustomer.save()
     
