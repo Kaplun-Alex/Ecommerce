@@ -43,12 +43,25 @@ def cartData(request):
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
+        cartItems = order.get_cart_items   
+    if not request.user.is_authenticated:
+        pass
+    
+    if request.META['CSRF_COOKIE']:
+        customer = Nauser.objects.get(id=nauserfinder(request.META['CSRF_COOKIE']))
+        print(customer.id, customer.shortName)
+        order, created = Order.objects.get_or_create(nacustomer=customer, complete=False)
+        items = order.orderitem_set.all()
         cartItems = order.get_cart_items
-    else:
-        cookieData = cookieCart(request)
-        cartItems = cookieData["cartItems"]
-        order = cookieData["order"]
-        items = cookieData["items"]
+    
+
+    
+#        cookieData = cookieCart(request)
+#        cartItems = cookieData["cartItems"]
+#        order = cookieData["order"]
+#        items = cookieData["items"]
+
+
     return {"items":items, "order":order, "cartItems":cartItems}
 
 def requestViewer(request):
