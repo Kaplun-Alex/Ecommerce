@@ -1,42 +1,16 @@
-import json
+
 from xmlrpc.client import Boolean
 from .models import *
-import requests
 
-def cookieCart(request):
 
-    try:
-        cart = json.loads(request.COOKIES['cart'])
-    except:
-        cart ={}
-        print('Cart:', cart)
-    items = []
-    order = {"get_cart_total":0, "get_cart_items":0, "shipping": False}
-    cartItems = order['get_cart_items']
-
-    for i in cart:
-        try:
-            cartItems += cart[i]["quantity"]
-            product = Product.objects.get(id=i)
-            total = (product.price * cart[i]["quantity"])
-            order['get_cart_total'] += total
-            order['get_cart_items'] += cart[i]["quantity"]
-            item = {
-                'product':{
-                    'id':product.id,
-                    'name':product.name,
-                    'price':product.price,
-                    'imageURL':product.imageURL,
-                    },
-                'quantity':cart[i]["quantity"],
-                'get_total':total,
-                }
-            items.append(item)
-            if product.digital == False:
-                order["shipping"] = True
-        except:
-            pass
-    return {"items":items, "order":order, "cartItems":cartItems}
+__all__ = [
+    "cartData",
+    "requestViever",
+    "nauserFinder", 
+    "nauserCreator",
+    "csrfCheck",
+    "csrfBaseCheck",
+]
 
 def cartData(request):
     if request.user.is_authenticated:
@@ -44,23 +18,20 @@ def cartData(request):
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items   
-    if not request.user.is_authenticated:
-        pass
-    
+    else:
+        nauserfinder(request.META['CSRF_COOKIE'])
+        
+
     if request.META['CSRF_COOKIE']:
+        print('in csrf_coocie_exist')
         customer = Nauser.objects.get(id=nauserfinder(request.META['CSRF_COOKIE']))
         print(customer.id, customer.shortName)
         order, created = Order.objects.get_or_create(nacustomer=customer, complete=False)
+        print(order)
         items = order.orderitem_set.all()
+        print(items)
         cartItems = order.get_cart_items
-    
-
-    
-#        cookieData = cookieCart(request)
-#        cartItems = cookieData["cartItems"]
-#        order = cookieData["order"]
-#        items = cookieData["items"]
-
+        print(cartItems)
 
     return {"items":items, "order":order, "cartItems":cartItems}
 
@@ -94,7 +65,10 @@ def requestViewer(request):
 def nauserfinder(nauserCSRF):
     shortCsrf = nauserCSRF[:4]
     print("!!!!!!", nauserCSRF, shortCsrf)
-    res = Nauser.objects.filter(shortName=shortCsrf)
+    if Nauser.objects.filter(shortName=shortCsrf):
+        print('User exist')
+    else:
+        print('No user')
     
     if not res:
         return int(0)
@@ -103,6 +77,27 @@ def nauserfinder(nauserCSRF):
         return res[0].id
     if len(res) > 1:
         return ((res.order_by("date_created")).last()).id
+
+def csrfCheck(csrfData):
+    try:
+        if csrfData.META["CSRF_COOKIE"]:
+            print("True")
+            return True
+        else:
+            print("False")
+            return False
+    except KeyError:
+        return False
+
+def csrfBaseCheck(csrfData):
+    data = (csrfData.META["CSRF_COOKIE"])[:4]
+    if Nauser.objects.filter(shortName=data):
+        print("Schort name is find")
+        return True
+    else:
+        print("csrf not in base")
+        return False
+
     
 def nausercreator(nauserCSRF):
     nacustomer = Nauser(csrfName=nauserCSRF)

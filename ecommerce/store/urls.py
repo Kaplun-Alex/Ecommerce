@@ -1,9 +1,11 @@
 from django.urls import path
 from . import views
+from .views import StoreView, CartView, CheckoutView, UpdateItemsView 
+
 
 urlpatterns = [
-    path("", views.store, name="store"),
-    path("cart/", views.cart, name="cart"),
-    path('checkout/', views.checkout, name="checkout"),
-    path('update_item/', views.updateItem, name="update_item"),
+    path("", StoreView.as_view(), name="store"),
+    path("cart/", CartView.as_view(), name="cart"),
+    path('checkout/', CheckoutView.as_view(), name="checkout"),
+    path('update_item/', UpdateItemsView.as_view(), name="update_item"),
 ]
